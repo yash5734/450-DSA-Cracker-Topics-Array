@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int>temp;
+        for(int k=0;k<nums.size()-1;k++)
+        for(int i=k;i<nums.size()-1;i++){
+            
+            int sum = nums[k]+nums[i+1];
+            if(sum==target){
+                temp.push_back(k);
+                temp.push_back(i+1);
+                return temp;
+            }else sum=0;
+        }
+        return temp;
+    }
+};
