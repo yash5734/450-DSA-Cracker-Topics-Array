@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int maximumBags(vector<int>& a, vector<int>& b, int ar) {
+     vector<int> Temp;
+    for (int i = 0; i < a.size();i++){
+        int temp = a[i] - b[i];
+        Temp.push_back(temp);
+    }
+    sort(Temp.begin(), Temp.end());
+    int i = 0;
+    while (ar!=0){
+        ar = ar - Temp[i];
+        if(ar<0){
+            break;
+        }
+
+
+        else{
+        Temp[i] = 0;
+        i++;
+        }
+
+
+        if(i>=Temp.size()){
+            break;
+        }
+    }
+
+    int freq = count(Temp.begin(), Temp.end(), 0);
+    return freq;
+    }
+};
