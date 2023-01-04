@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        next_permutation(nums.begin(), nums.end());
+    }
+};
+
+
+
+
+//****************2nd method***********************
+
+class Solution {
+public:
+    void nextPermutation(vector<int>& a) {
+        int ind = -1;
+        int n = a.size();
+        for(int i = n-1;i>0;i--){
+            if(a[i]>a[i-1]){
+                ind = i;
+                break;
+            }
+        }
+        if(ind==-1) reverse(a.begin(),a.end());
+        else{
+        int prev = ind;
+        for(int i=ind+1;i<n;i++){
+            if(a[i]>a[ind-1] && a[i]<=a[prev])
+            prev = i;
+        }
+
+        swap(a[prev],a[ind-1]);
+        reverse(a.begin()+ind,a.end());
+        }
+
+    }
+};
