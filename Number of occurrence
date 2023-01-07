@@ -1,0 +1,14 @@
+class Solution{
+public:	
+	/* if x is present in arr[] then returns the count
+		of occurrences of x, otherwise returns 0. */
+	int count(int a[], int n, int x) {
+	    vector<int> arr(a,a+n);
+	    auto low = lower_bound(arr.begin(),arr.end(),x);
+	    auto upp = upper_bound(low,arr.end(),x);
+	    
+	    int first = low-arr.begin();
+	    int last = upp-arr.begin()-1;
+	    return last-first+1;
+	}
+};
