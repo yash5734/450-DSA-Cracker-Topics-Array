@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+
+bool isValid(char ch){
+    if('a'<=ch && ch<='z'|| 'A'<=ch&& ch<='Z'|| '0'<=ch&& ch<='9') return 1;
+    return 0;
+}
+
+char toLowerCase(char ch){
+    if('A'<=ch &&ch<='Z'|| '0'<=ch&&ch<='9') return ch-'A'+'a';
+    return ch;
+}
+
+bool isPallindrome(string str){
+    
+    for(int i =0;i<str.length()/2;i++){
+        if(str[i]!=str[str.length()-i-1]) return false; 
+    }
+    return true;
+}
+
+bool checkPalindrome(string s)
+{
+
+    string temp = "";
+    for(int i =0 ;i<s.length();i++){
+        if(isValid(s[i])) temp.push_back(s[i]);
+    }
+    
+    for(int i =0;i<temp.length();i++){
+        temp[i] = toLowerCase(temp[i]);
+    }
+    
+    return isPallindrome(temp);
+
+}
