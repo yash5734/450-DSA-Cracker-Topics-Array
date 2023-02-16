@@ -1,0 +1,36 @@
+void sortedInsert(stack<int> &stack, int num) {
+    //base case
+    if(stack.empty() || (!stack.empty() && stack.top() < num) ) {
+        stack.push(num);
+        return;
+    }
+    
+    int n = stack.top();
+    stack.pop();
+    
+    //recusrive call
+    sortedInsert(stack, num);
+    
+    stack.push(n);
+}
+
+
+/* The below method sorts the stack s 
+you are required to complete the below method */
+void SortedStack :: sort()
+{
+   //Your code here
+   
+   // base case
+   if(s.empty()){
+       return ;
+   }
+   
+   int num = s.top();
+   s.pop();
+   
+   // recursive call
+   sort();
+   sortedInsert(s,num);
+   
+}
