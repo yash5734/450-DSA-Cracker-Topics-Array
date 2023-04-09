@@ -1,0 +1,22 @@
+class Solution{
+  public:
+ 
+    int tour(petrolPump p[],int n)
+    {
+       //Your code here
+       int balance =0,kami =0,start =0;
+       for(int i=0;i<n;i++){
+           balance+=p[i].petrol-p[i].distance;
+           if(balance<0){
+               start = i+1;
+               kami += balance;
+               balance =0;
+           }
+       }
+       
+       if(kami+balance>=0){
+           return start;
+       }
+       return -1;
+    }
+};
