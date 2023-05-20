@@ -5,6 +5,7 @@ public:
         if(a==NULL&&b==NULL) return true;
         else if(a==NULL||b==NULL)return false;
         return (a->val == b->val) && check(a->left,b->right) && check(a->right,b->left);
+        
     }
 
     bool isSymmetric(TreeNode* root) {
