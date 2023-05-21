@@ -1,0 +1,36 @@
+class Solution {
+public:
+
+    bool solve(TreeNode* root, vector<TreeNode*>&ans,TreeNode* key){
+     if(root== NULL) return false;
+     
+     ans.push_back(root);
+     if(root==key) return true;
+     
+     if(solve(root->left,ans,key)) return true;
+     else if(solve(root->right,ans,key)) return true;
+     
+     ans.pop_back();
+     return false;
+ }
+
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        vector<TreeNode*>vec1;
+        vector<TreeNode*>vec2;
+        if(root == NULL) return NULL;
+        solve(root,vec1,p);
+        solve(root,vec2,q);
+
+        int it1 =0,it2 =0;
+        TreeNode* c;
+        while(it1<vec1.size()&&it2<vec2.size()){
+            if(vec1[it1] == vec2[it2]){
+                c = vec1[it1];
+            }
+            it1++;
+            it2++;
+        }
+        return c;
+
+    }
+};
