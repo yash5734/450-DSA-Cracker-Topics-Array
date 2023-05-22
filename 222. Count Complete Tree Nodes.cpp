@@ -11,16 +11,32 @@
  */
 class Solution {
 public:
-    void postOrder(TreeNode* root, int &n){
-        if(root == NULL) return;
-        postOrder(root->left,n);
-        postOrder(root->right,n);
-        n++;
-    }
     int countNodes(TreeNode* root) {
-        if(root==NULL) return 0;
-        int n=0;
-        postOrder(root,n);
-        return n;
+        if(root == NULL) return 0;
+
+        int lh = leftHeight(root);
+        int rh = rightHeight(root);
+        if(lh==rh) return pow(2,lh)-1;
+
+        return 1+countNodes(root->left) + countNodes(root->right);
+    }
+    int leftHeight(TreeNode* root){
+        int height =0;
+        while(root){
+            height++;
+            root = root->left;
+        }
+        return height;
+    }
+    int rightHeight(TreeNode* root){
+        int height =0;
+        while(root){
+            height++;
+            root = root->right;
+        }
+        return height;
     }
 };
+
+
+// Time Complexity = O(logn)
