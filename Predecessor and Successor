@@ -1,0 +1,30 @@
+bool flag =true;
+void inorder(Node* root, Node*& pre, Node*& suc, int key){
+    if(root == NULL) return;
+    
+    inorder(root->left,pre,suc,key);
+    if(flag==true){
+    if(root->key<key){
+    pre = root;
+    }
+    else if(root->key == key);
+    else{
+        suc = root;
+        flag = false;
+    }
+    
+    }
+    
+    inorder(root->right,pre,suc,key);
+    
+    
+    
+}
+void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+{
+
+// Your code goes here
+// bool flag = true;
+inorder(root,pre,suc,key);
+
+}
