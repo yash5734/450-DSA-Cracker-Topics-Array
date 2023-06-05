@@ -1,3 +1,5 @@
+// using topo sort which uses dfs
+
 class Solution
 {
     private:
@@ -26,5 +28,42 @@ class Solution
 	        st.pop();
 	    }
 	    return ans;
+	}
+};
+
+// using kahn's algo which uses bfs traversal
+
+class Solution
+{
+	public:
+	// using kahn's algo
+	//Function to return list containing vertices in Topological order. 
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    int inDegree[V] = {0};
+	    for(int i=0;i<V;i++){
+	        for(auto it: adj[i]){
+	            inDegree[it]++;
+	        }
+	    }
+	    
+	    vector<int> topo;
+	    queue<int>q;
+	    for(int i=0;i<V;i++){
+	        if(inDegree[i]==0){
+	            q.push(i);
+	        }
+	    }
+	    while(!q.empty()){
+	        int node = q.front();
+	        q.pop();
+	        topo.push_back(node);
+	        for(auto it:adj[node]){
+	            inDegree[it]--;
+	            if(inDegree[it]==0) q.push(it);
+	        }
+	    }
+	    return topo;
 	}
 };
