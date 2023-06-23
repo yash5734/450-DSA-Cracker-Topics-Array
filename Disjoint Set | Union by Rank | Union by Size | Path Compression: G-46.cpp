@@ -5,10 +5,11 @@ class disJointSet{
     vector<int>rank,parent,size;
     disJointSet(int n){
         rank.resize(n+1,0);
-        size.resize(n+1,0);
+        size.resize(n+1);
         parent.resize(n+1);
         for(int i=0;i<=n;i++){
             parent[i] = i;
+            size[i] = i;
         }
     }
     
